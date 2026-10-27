@@ -48,7 +48,7 @@ fuentes libres                        regions.json ──┐
 
 ## Requisitos
 
-- Node 20 (`nvm use 20`) y pnpm
+- Node 24 (`nvm use 24`) y pnpm — Vercel ya no soporta Node 20
 - `unzip` en el PATH (lo usa el baker para GeoNames)
 - Una clave de Google Maps Platform con **Maps JavaScript API** y **Street View Static API**
   habilitadas
@@ -56,7 +56,7 @@ fuentes libres                        regions.json ──┐
 ## Setup
 
 ```bash
-nvm use 20
+nvm use 24
 pnpm install
 cp .env.example .env     # poné tu VITE_MAPS_KEY
 pnpm tsx scripts/seed-regions.ts
