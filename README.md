@@ -79,9 +79,11 @@ pnpm bake:revalidate --region ar              # podar los panoramas que Google r
 | `VITE_MAPS_KEY` | en el navegador, es pública por naturaleza | por referrer, solo Maps JavaScript API |
 | `GOOGLE_MAPS_BAKE_KEY` | solo en `.env`, nunca se commitea | solo Street View Static API |
 
-El plan gratuito da 10.000 cargas de panorama por mes (unas 2.000 partidas de cinco rondas). Poné
-un **tope diario de cuota** en Cloud console y no hay forma de que te facturen. Las consultas de
-metadata del baker son gratis y no consumen cuota.
+Dynamic Street View es un SKU **Pro**: 5.000 cargas de panorama gratis por mes (unas 1.000
+partidas de cinco rondas). Pasado eso son USD 14 por cada 1.000. Poné un **tope diario de cuota**
+de ~150 en Cloud console (150 × 30 = 4.500, debajo del límite gratis) y no hay forma de que te
+facturen: Google rechaza las que sobran en vez de cobrarlas. Las consultas de metadata del baker
+son gratis y no consumen cuota.
 
 Si preferís cero riesgo de facturación, `VITE_PANO_DRIVER=embed` usa el Embed API, que es gratis e
 ilimitado — pero es un iframe: no se puede fijar ni bloquear la cámara, así que los escalones que

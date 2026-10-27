@@ -72,8 +72,8 @@
 		</p>
 		<p class="text-sm text-text-secondary">Panoramas cargados hoy: {stats.panosToday}</p>
 		<p class="text-xs text-text-muted">
-			El plan gratuito da 10.000 cargas por mes. Poné un tope diario de cuota en Cloud console y
-			no hay forma de que te facturen.
+			El plan gratuito da 5.000 cargas por mes (SKU Pro). Poné un tope diario de ~150 en Cloud
+			console y no hay forma de que te facturen.
 		</p>
 	</section>
 
