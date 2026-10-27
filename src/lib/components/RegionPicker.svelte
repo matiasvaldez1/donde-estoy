@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Region } from '$lib/types';
 	import { isThin } from '$lib/data/regions';
+	import Chip from '$lib/ui/Chip.svelte';
 
 	let {
 		regions,
@@ -29,28 +30,25 @@
 	);
 </script>
 
-<div class="space-y-4">
+<div class="space-y-5">
 	{#each GROUPS as group}
 		{@const list = playable.filter((r) => r.kind === group.kind)}
 		{#if list.length}
 			<div>
-				<h3 class="mb-2 text-xs font-semibold tracking-wide text-text-muted uppercase">
+				<h3 class="mb-2 font-display text-[8px] tracking-wide text-text-muted uppercase">
 					{group.label}
 				</h3>
 				<div class="flex flex-wrap gap-2">
 					{#each list as region (region.id)}
-						<button
+						<Chip
+							selected={selected === region.id}
+							tone={isThin(region) ? 'warning' : 'neutral'}
+							title={isThin(region) ? 'Pocas ubicaciones todavía' : undefined}
 							onclick={() => onselect(region.id)}
-							class="rounded border px-3 py-1.5 text-sm transition-colors {selected === region.id
-								? 'border-accent bg-accent-muted text-accent'
-								: 'border-border bg-bg-secondary text-text-secondary hover:bg-bg-hover hover:text-text-primary'}"
 						>
 							{region.name}
-							<span class="ml-1.5 text-xs text-text-muted">{region.locationCount}</span>
-							{#if isThin(region)}
-								<span class="ml-1 text-xs text-warning" title="Pocas ubicaciones todavía">·</span>
-							{/if}
-						</button>
+							<span class="ml-2 opacity-60">{region.locationCount}</span>
+						</Chip>
 					{/each}
 				</div>
 			</div>
@@ -58,9 +56,11 @@
 	{/each}
 
 	{#if !playable.length}
-		<p class="text-sm text-text-muted">
-			No hay ninguna región con pool. Corré <code>pnpm tsx scripts/seed-pool.ts</code> o
-			<code>pnpm bake --region AR</code>.
+		<p class="text-text-muted">
+			Todavía no hay ninguna región con ubicaciones.
+			{#if import.meta.env.DEV}
+				Corré <code>pnpm tsx scripts/seed-pool.ts</code> o <code>pnpm bake --region ar</code>.
+			{/if}
 		</p>
 	{/if}
 </div>

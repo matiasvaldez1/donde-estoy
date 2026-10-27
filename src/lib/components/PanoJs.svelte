@@ -95,10 +95,11 @@
 	{:else if status === 'error'}
 		<div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-bg-primary/90 p-6 text-center">
 			<p class="text-sm text-danger">{message}</p>
-			<p class="text-xs text-text-muted">
-				Si falta la clave, copiá <code>.env.example</code> a <code>.env</code> y poné tu
-				<code>VITE_MAPS_KEY</code>.
-			</p>
+			{#if import.meta.env.DEV}
+				<p class="text-xs text-text-muted">
+					Copiá <code>.env.example</code> a <code>.env</code> y poné tu <code>VITE_MAPS_KEY</code>.
+				</p>
+			{/if}
 		</div>
 	{/if}
 </div>

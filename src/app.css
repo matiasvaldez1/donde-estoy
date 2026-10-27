@@ -1,28 +1,170 @@
-@import 'tailwindcss';
+/*
+ * Orden de capas explícito: NES.css es global y opinionado, y el preflight de
+ * Tailwind también. Declarando las capas no dependemos del orden de los imports.
+ * Resultado: nes pisa preflight, las utilidades de Tailwind pisan nes.
+ */
+@layer theme, base, nes, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'nes.css/css/nes.min.css' layer(nes);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Tipografías self-hosted: sin pedido externo, sin sorpresas de CSP. */
+@import '@fontsource/press-start-2p';
+@import '@fontsource/silkscreen/400.css';
+@import '@fontsource/silkscreen/700.css';
 
 @theme {
 	--color-bg-primary: #0f0f0f;
 	--color-bg-secondary: #1a1a1a;
 	--color-bg-tertiary: #252525;
 	--color-bg-hover: #2a2a2a;
-	--color-border: #333333;
+	/* Más claro que el #333 anterior: con bordes de 4px hacía falta contraste. */
+	--color-border: #3f3f3f;
 	--color-text-primary: #e5e5e5;
 	--color-text-secondary: #a3a3a3;
 	--color-text-muted: #737373;
-	--color-accent: #10b981;
-	--color-accent-hover: #059669;
-	--color-accent-muted: #065f46;
-	--color-danger: #ef4444;
-	--color-warning: #f59e0b;
+
+	/* Paleta NES tirada hacia el acento viejo: arcade oscuro, no juguete. */
+	--color-accent: #4ade80;
+	--color-accent-hover: #22c55e;
+	--color-accent-muted: #14532d;
+	--color-danger: #e76e55;
+	--color-warning: #f7d51d;
+	--color-info: #209cee;
+
+	/* Geometría pixel: radio cero en todos lados, grilla de 4px. */
+	--radius-none: 0px;
+	--radius-xs: 0px;
+	--radius-sm: 0px;
+	--radius-md: 0px;
+	--radius-lg: 0px;
+	--radius-xl: 0px;
+	--radius-2xl: 0px;
+	--radius-3xl: 0px;
+	--radius-full: 0px;
+
+	--font-display: 'Press Start 2P', ui-monospace, monospace;
+	--font-body: 'Silkscreen', 'Press Start 2P', ui-monospace, monospace;
 }
 
 body {
 	background-color: var(--color-bg-primary);
 	color: var(--color-text-primary);
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-family: var(--font-body);
+	/* Press Start 2P es ancha: sin esto el español largo se va de pantalla. */
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/*
+ * Borde escalonado: la firma del estilo. Las esquinas quedan vacías, que es
+ * exactamente como dibujaba cajas la UI de 8 bits.
+ */
+@utility pixel-edge {
+	box-shadow:
+		0 -4px 0 0 var(--color-border),
+		0 4px 0 0 var(--color-border),
+		-4px 0 0 0 var(--color-border),
+		4px 0 0 0 var(--color-border);
+}
+
+@utility pixel-edge-accent {
+	box-shadow:
+		0 -4px 0 0 var(--color-accent),
+		0 4px 0 0 var(--color-accent),
+		-4px 0 0 0 var(--color-accent),
+		4px 0 0 0 var(--color-accent);
+}
+
+@utility font-display {
+	font-family: var(--font-display);
+}
+
+/* Movimiento escalonado, nunca suave: el easing continuo rompe la ilusión. */
+@utility press {
+	transition: transform 80ms steps(2);
+}
+.press:active:not(:disabled) {
+	transform: translateY(4px);
+}
+
+/* Foco visible en todo lo interactivo: antes no había ninguno. */
+:where(a, button, input, [tabindex]):focus-visible {
+	outline: 4px solid var(--color-warning);
+	outline-offset: 2px;
 }
 
 .leaflet-container {
 	background: var(--color-bg-tertiary);
-	font-family: inherit;
+	font-family: var(--font-body);
+}
+
+/* Leaflet trae su propio look claro y redondeado: no pega con nada de esto. */
+.leaflet-control-zoom a,
+.leaflet-control-attribution {
+	border-radius: 0 !important;
+	font-family: var(--font-body) !important;
+}
+
+.leaflet-control-zoom a {
+	background: var(--color-bg-secondary) !important;
+	color: var(--color-text-primary) !important;
+	border: 2px solid var(--color-border) !important;
+	font-family: var(--font-display) !important;
+	font-size: 10px !important;
+	line-height: 26px !important;
+}
+
+.leaflet-control-zoom a:hover {
+	background: var(--color-bg-hover) !important;
+}
+
+.leaflet-control-attribution {
+	background: var(--color-bg-primary) !important;
+	color: var(--color-text-muted) !important;
+	font-size: 9px !important;
+}
+
+.leaflet-control-attribution a {
+	color: var(--color-text-secondary) !important;
+}
+
+.leaflet-tooltip {
+	background: var(--color-bg-secondary) !important;
+	color: var(--color-text-primary) !important;
+	border: 2px solid var(--color-border) !important;
+	border-radius: 0 !important;
+	font-family: var(--font-body) !important;
+	box-shadow: none !important;
+}
+
+.leaflet-tooltip::before {
+	display: none !important;
+}
+
+/*
+ * El globo se renderiza a un tercio de tamaño y se estira por CSS: así los
+ * píxeles quedan gordos de verdad en vez de un 3D suavizado.
+ */
+.pixel-globe > div,
+.pixel-globe .scene-container,
+.pixel-globe canvas {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.pixel-globe canvas {
+	image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

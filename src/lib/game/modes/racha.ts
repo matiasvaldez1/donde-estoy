@@ -8,7 +8,7 @@ export const racha: ModeDef = {
 	id: 'racha',
 	name: 'Racha',
 	tagline: 'Solo el país. Una sola equivocación y se termina.',
-	icon: '✦',
+	icon: 'racha',
 	rounds: 'until-fail',
 	regionSource: 'ladder',
 	usesLadder: true,

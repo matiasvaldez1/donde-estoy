@@ -10,7 +10,7 @@ export const contrarreloj: ModeDef = {
 	id: 'contrarreloj',
 	name: 'Contrarreloj',
 	tagline: '5 minutos. Todas las rondas que aguantes.',
-	icon: '◴',
+	icon: 'contrarreloj',
 	rounds: 'until-fail',
 	regionSource: 'ladder',
 	usesLadder: true,

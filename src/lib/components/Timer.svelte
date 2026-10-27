@@ -13,6 +13,13 @@
 
 	let left = $state(0);
 
+	/** Bloques discretos que se van apagando: el reloj se ve, no solo se lee. */
+	const BLOCKS = 10;
+	const filled = $derived(
+		limitSec ? Math.ceil((left / limitSec) * BLOCKS) : 0
+	);
+	const urgent = $derived(left <= 10);
+
 	$effect(() => {
 		if (limitSec === null) return;
 		const limit = limitSec;
@@ -33,7 +40,22 @@
 </script>
 
 {#if limitSec !== null}
-	<span class="font-mono text-sm {left <= 10 ? 'text-danger' : 'text-text-secondary'}">
-		{formatClock(left)}
+	<span class="flex items-center gap-2" class:animate-pulse={urgent}>
+		<span class="flex gap-[2px]" aria-hidden="true">
+			{#each Array(BLOCKS) as _, i}
+				<span
+					class="h-3 w-[5px] {i < filled
+						? urgent
+							? 'bg-danger'
+							: 'bg-accent'
+						: 'bg-bg-tertiary'}"
+				></span>
+			{/each}
+		</span>
+		<span
+			class="font-display text-[10px] leading-none {urgent ? 'text-danger' : 'text-text-secondary'}"
+		>
+			{formatClock(left)}
+		</span>
 	</span>
 {/if}

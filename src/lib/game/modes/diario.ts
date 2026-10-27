@@ -35,7 +35,7 @@ export const diario: ModeDef = {
 	id: 'diario',
 	name: 'Desafío Diario',
 	tagline: 'Cinco lugares. Los mismos para todos. Un intento por día.',
-	icon: '◈',
+	icon: 'diario',
 	rounds: ROUNDS,
 	regionSource: 'seeded',
 	usesLadder: false,

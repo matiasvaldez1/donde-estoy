@@ -1,13 +1,15 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
+	import Icon from '$lib/ui/Icon.svelte';
+	import type { IconName } from '$lib/ui/icons';
 
 	let { children } = $props();
 
-	const navItems = [
-		{ href: '/', label: 'Jugar', icon: '◉' },
-		{ href: '/stats', label: 'Estadísticas', icon: '▤' },
-		{ href: '/config', label: 'Configuración', icon: '⚙' }
+	const navItems: Array<{ href: string; label: string; icon: IconName }> = [
+		{ href: '/', label: 'Jugar', icon: 'jugar' },
+		{ href: '/stats', label: 'Stats', icon: 'stats' },
+		{ href: '/config', label: 'Config', icon: 'config' }
 	];
 
 	/** La pantalla de juego se come todo el alto: ahí la barra molesta. */
@@ -17,23 +19,25 @@
 {#if playing}
 	{@render children()}
 {:else}
-	<div class="flex min-h-screen flex-col">
-		<nav class="flex items-center gap-1 border-b border-border bg-bg-secondary px-5 py-3">
-			<a href="/" class="mr-6 text-lg font-semibold text-text-primary">¿Dónde Estoy?</a>
+	<div class="flex min-h-dvh flex-col">
+		<nav
+			class="flex flex-wrap items-center gap-2 border-b-4 border-border bg-bg-secondary px-5 py-4"
+		>
+			<a href="/" class="mr-6 font-display text-xs text-accent">¿Dónde Estoy?</a>
 			{#each navItems as item}
 				<a
 					href={item.href}
-					class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors {$page.url
-						.pathname === item.href
-						? 'bg-accent-muted text-accent'
-						: 'text-text-secondary hover:bg-bg-hover hover:text-text-primary'}"
+					class="press flex items-center gap-2 border-4 px-3 py-2 font-display text-[10px] leading-none {$page
+						.url.pathname === item.href
+						? 'border-accent bg-accent text-bg-primary'
+						: 'border-transparent text-text-secondary hover:border-border hover:text-text-primary'}"
 				>
-					<span>{item.icon}</span>
+					<Icon name={item.icon} size={12} />
 					{item.label}
 				</a>
 			{/each}
 		</nav>
-		<main class="flex-1 p-8">
+		<main class="flex-1 p-6 sm:p-8">
 			{@render children()}
 		</main>
 	</div>

@@ -9,7 +9,7 @@ export const escalera: ModeDef = {
 	id: 'escalera',
 	name: 'Escalera',
 	tagline: 'Arrancá en tu provincia y terminá en el mundo. Si podés.',
-	icon: '▲',
+	icon: 'escalera',
 	rounds: 'until-fail',
 	regionSource: 'ladder',
 	usesLadder: true,

@@ -1,3 +1,5 @@
+import type { IconName } from './ui/icons';
+
 export type RegionKind = 'city' | 'admin1' | 'country' | 'bloc' | 'continent' | 'world';
 
 /** [oeste, sur, este, norte] */
@@ -128,7 +130,7 @@ export interface ModeDef {
 	id: ModeId;
 	name: string;
 	tagline: string;
-	icon: string;
+	icon: IconName;
 	rounds: number | 'until-fail';
 	regionSource: 'player' | 'ladder' | 'seeded';
 	usesLadder: boolean;

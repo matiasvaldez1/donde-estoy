@@ -7,7 +7,7 @@ export const clasica: ModeDef = {
 	id: 'clasica',
 	name: 'Clásica',
 	tagline: '5 rondas en la región que elijas. Sin apuro.',
-	icon: '◉',
+	icon: 'clasica',
 	rounds: ROUNDS,
 	regionSource: 'player',
 	usesLadder: false,

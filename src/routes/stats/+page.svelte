@@ -3,59 +3,71 @@
 	import { MAX_TIER } from '$lib/game/ladder';
 	import { stats } from '$lib/stores/stats.svelte';
 	import { formatDate, formatScore } from '$lib/utils';
+	import Card from '$lib/ui/Card.svelte';
+	import Heading from '$lib/ui/Heading.svelte';
+	import Icon from '$lib/ui/Icon.svelte';
+	import PageShell from '$lib/ui/PageShell.svelte';
 
 	$effect(() => stats.load());
 
 	const dailies = $derived(
-		Object.values(stats.current.daily).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 14)
+		Object.values(stats.current.daily)
+			.sort((a, b) => b.date.localeCompare(a.date))
+			.slice(0, 14)
 	);
 </script>
 
-<div class="mx-auto max-w-3xl space-y-8">
+<PageShell width="max-w-3xl">
 	<section>
-		<h1 class="text-2xl font-semibold text-text-primary">Estadísticas</h1>
-		<div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-			<div class="rounded border border-border bg-bg-secondary p-4">
-				<p class="text-xs text-text-muted">Rondas jugadas</p>
-				<p class="text-xl font-semibold text-text-primary">{stats.current.totalRounds}</p>
-			</div>
-			<div class="rounded border border-border bg-bg-secondary p-4">
-				<p class="text-xs text-text-muted">Puntos acumulados</p>
-				<p class="text-xl font-semibold text-text-primary">{formatScore(stats.current.totalScore)}</p>
-			</div>
-			<div class="rounded border border-border bg-bg-secondary p-4">
-				<p class="text-xs text-text-muted">Panoramas hoy</p>
-				<p class="text-xl font-semibold text-text-primary">{stats.panosToday}</p>
-			</div>
+		<Heading level={1}>Estadísticas</Heading>
+		<div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3">
+			<Card>
+				<p class="font-display text-[8px] text-text-muted">RONDAS</p>
+				<p class="mt-2 font-display text-sm text-accent">{stats.current.totalRounds}</p>
+			</Card>
+			<Card>
+				<p class="font-display text-[8px] text-text-muted">PUNTOS</p>
+				<p class="mt-2 font-display text-sm text-accent">
+					{formatScore(stats.current.totalScore)}
+				</p>
+			</Card>
+			{#if import.meta.env.DEV}
+				<Card>
+					<p class="font-display text-[8px] text-text-muted">PANOS HOY</p>
+					<p class="mt-2 font-display text-sm text-text-primary">{stats.panosToday}</p>
+				</Card>
+			{/if}
 		</div>
 	</section>
 
 	<section>
-		<h2 class="mb-3 text-lg font-semibold text-text-primary">Por modo</h2>
-		<div class="overflow-x-auto rounded border border-border">
-			<table class="w-full text-sm">
-				<thead class="bg-bg-tertiary text-left text-xs text-text-muted uppercase">
-					<tr>
-						<th class="px-3 py-2">Modo</th>
-						<th class="px-3 py-2">Partidas</th>
-						<th class="px-3 py-2">Rondas</th>
-						<th class="px-3 py-2">Mejor puntaje</th>
-						<th class="px-3 py-2">Mejor racha</th>
-						<th class="px-3 py-2">Escalón</th>
+		<Heading>Por modo</Heading>
+		<div class="nes-table-responsive mt-4">
+			<table class="nes-table is-dark is-bordered w-full">
+				<thead>
+					<tr class="text-[8px]">
+						<th>Modo</th>
+						<th>Part.</th>
+						<th>Rondas</th>
+						<th>Mejor</th>
+						<th>Racha</th>
+						<th>Esc.</th>
 					</tr>
 				</thead>
 				<tbody>
 					{#each MODE_LIST as mode (mode.id)}
 						{@const record = stats.current.byMode[mode.id]}
-						<tr class="border-t border-border">
-							<td class="px-3 py-2 text-text-primary">{mode.icon} {mode.name}</td>
-							<td class="px-3 py-2 text-text-secondary">{record?.games ?? 0}</td>
-							<td class="px-3 py-2 text-text-secondary">{record?.rounds ?? 0}</td>
-							<td class="px-3 py-2 text-text-secondary">{formatScore(record?.bestScore ?? 0)}</td>
-							<td class="px-3 py-2 text-text-secondary">{record?.bestStreak ?? 0}</td>
-							<td class="px-3 py-2 text-text-muted">
-								{mode.usesLadder ? `${record?.bestTier ?? 0}/${MAX_TIER}` : '—'}
+						<tr>
+							<td class="w-44 break-words"><span class="flex items-center gap-2">
+								<Icon name={mode.icon} size={12} class="text-accent" />
+								{mode.name}
+								</span>
 							</td>
+							<td>{record?.games ?? 0}</td>
+							<td>{record?.rounds ?? 0}</td>
+							<td>{formatScore(record?.bestScore ?? 0)}</td>
+							<td>{record?.bestStreak ?? 0}</td>
+							<td>{mode.usesLadder ? `${record?.bestTier ?? 0}/${MAX_TIER}` : '—'}</td>
 						</tr>
 					{/each}
 				</tbody>
@@ -63,18 +75,26 @@
 		</div>
 	</section>
 
-	{#if dailies.length}
-		<section>
-			<h2 class="mb-3 text-lg font-semibold text-text-primary">Desafíos diarios</h2>
-			<div class="space-y-2">
+	<section>
+		<Heading>Desafíos diarios</Heading>
+		{#if dailies.length}
+			<div class="mt-4 space-y-2">
 				{#each dailies as day (day.date)}
-					<div class="flex items-center gap-4 rounded border border-border bg-bg-secondary px-4 py-2 text-sm">
+					<div
+						class="flex flex-wrap items-center gap-4 border-4 border-border bg-bg-secondary px-4 py-3"
+					>
 						<span class="text-text-muted">{formatDate(day.date)}</span>
-						<span class="font-mono">{day.grid}</span>
-						<span class="ml-auto text-text-primary">{formatScore(day.total)}</span>
+						<span class="text-lg">{day.grid}</span>
+						<span class="ml-auto font-display text-[10px] text-accent">
+							{formatScore(day.total)}
+						</span>
 					</div>
 				{/each}
 			</div>
-		</section>
-	{/if}
-</div>
+		{:else}
+			<p class="mt-4 text-text-muted">
+				Todavía no jugaste ninguno. Son cinco lugares, los mismos para todos, uno por día.
+			</p>
+		{/if}
+	</section>
+</PageShell>

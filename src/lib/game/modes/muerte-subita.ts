@@ -5,7 +5,7 @@ export const muerteSubita: ModeDef = {
 	id: 'muerte-subita',
 	name: 'Muerte Súbita',
 	tagline: 'El margen de error se encoge cada ronda. Hasta que no entres.',
-	icon: '◆',
+	icon: 'muerte-subita',
 	rounds: 'until-fail',
 	regionSource: 'ladder',
 	usesLadder: true,

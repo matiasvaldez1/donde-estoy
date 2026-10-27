@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { formatScore } from '$lib/utils';
+	import Button from '$lib/ui/Button.svelte';
 
 	let {
 		number,
@@ -30,12 +31,9 @@
 	}
 </script>
 
-<div class="rounded border border-border bg-bg-secondary p-4">
-	<pre class="mb-3 font-mono text-sm whitespace-pre-wrap text-text-primary">{text}</pre>
-	<button
-		onclick={copy}
-		class="rounded bg-accent px-3 py-1.5 text-sm font-medium text-bg-primary transition-colors hover:bg-accent-hover"
-	>
+<div class="nes-container is-dark space-y-3">
+	<pre class="text-lg whitespace-pre-wrap text-text-primary">{text}</pre>
+	<Button variant={copied ? 'primary' : 'secondary'} onclick={copy}>
 		{copied ? 'Copiado' : 'Copiar resultado'}
-	</button>
+	</Button>
 </div>
