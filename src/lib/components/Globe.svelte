@@ -21,7 +21,7 @@
 	 * truco que hace que un globo 3D no desentone con el resto: píxeles gordos
 	 * de verdad, no un globo corporativo suavizado.
 	 */
-	const SCALE = 3;
+	const SCALE = ambient ? 3 : 2;
 
 	$effect(() => {
 		const target = result;
@@ -78,6 +78,7 @@
 				g.atmosphereAltitude(0.12);
 				g.polygonsData(countries.features);
 				g.polygonCapColor(() => land);
+				g.polygonStrokeColor(() => accent);
 				g.polygonSideColor(() => 'rgba(0,0,0,0)');
 				g.polygonStrokeColor(() => accent);
 				g.polygonAltitude(0.006);
@@ -111,24 +112,24 @@
 						: [{ lat: truth.lat, lng: truth.lng, color: accent }]
 				);
 				g.pointColor((d: unknown) => (d as { color: string }).color);
-				g.pointAltitude(0.04);
-				g.pointRadius(0.8);
+				g.pointAltitude(0.06);
+				g.pointRadius(1.6);
 
 				if (pin) {
 					g.arcsData([
 						{ startLat: pin.lat, startLng: pin.lng, endLat: truth.lat, endLng: truth.lng }
 					]);
 					g.arcColor(() => line);
-					g.arcStroke(0.6);
+					g.arcStroke(1.1);
 					g.arcDashLength(0.4);
 					g.arcDashGap(0.2);
 					g.arcDashAnimateTime(1200);
 					g.arcAltitudeAutoScale(0.4);
 
 					// Arranca sobre tu respuesta y viaja hasta el punto medio.
-					g.pointOfView({ lat: pin.lat, lng: pin.lng, altitude: 1.4 }, 0);
+					g.pointOfView({ lat: pin.lat, lng: pin.lng, altitude: 0.9 }, 0);
 					const km = target.distanceKm ?? 0;
-					const altitude = Math.min(2.6, Math.max(0.5, km / 4000 + 0.5));
+					const altitude = Math.min(2.2, Math.max(0.28, km / 9000 + 0.3));
 					setTimeout(() => {
 						if (!cancelled) {
 							g.pointOfView(
@@ -138,7 +139,7 @@
 						}
 					}, 200);
 				} else {
-					g.pointOfView({ lat: truth.lat, lng: truth.lng, altitude: 1.6 }, 0);
+					g.pointOfView({ lat: truth.lat, lng: truth.lng, altitude: 0.9 }, 0);
 				}
 			} catch {
 				if (!cancelled) onfail?.();

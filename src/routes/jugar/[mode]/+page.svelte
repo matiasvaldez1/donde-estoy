@@ -269,7 +269,7 @@
 								.location.ym}
 						</p>
 
-						<div class="h-64 overflow-hidden border-4 border-border">
+						<div class="h-80 overflow-hidden border-4 border-border">
 							{#if globeFailed}
 								<ResultMap {result} />
 							{:else}
