@@ -102,6 +102,10 @@
 						? { lat: guess.lat, lng: guess.lng }
 						: null;
 
+				const km = target.distanceKm ?? 0;
+				const altitude = Math.min(2.2, Math.max(0.28, km / 9000 + 0.3));
+				const dot = Math.min(1.1, Math.max(0.16, altitude * 0.42));
+
 				g.pointsData(
 					pin
 						? [
@@ -111,15 +115,15 @@
 						: [{ lat: truth.lat, lng: truth.lng, color: accent }]
 				);
 				g.pointColor((d: unknown) => (d as { color: string }).color);
-				g.pointAltitude(0.06);
-				g.pointRadius(1.6);
+				g.pointAltitude(0.02);
+				g.pointRadius(dot);
 
 				if (pin) {
 					g.arcsData([
 						{ startLat: pin.lat, startLng: pin.lng, endLat: truth.lat, endLng: truth.lng }
 					]);
 					g.arcColor(() => line);
-					g.arcStroke(1.1);
+					g.arcStroke(Math.max(0.12, dot * 0.5));
 					g.arcDashLength(0.4);
 					g.arcDashGap(0.2);
 					g.arcDashAnimateTime(1200);
@@ -127,8 +131,6 @@
 
 					// Arranca sobre tu respuesta y viaja hasta el punto medio.
 					g.pointOfView({ lat: pin.lat, lng: pin.lng, altitude: 0.9 }, 0);
-					const km = target.distanceKm ?? 0;
-					const altitude = Math.min(2.2, Math.max(0.28, km / 9000 + 0.3));
 					setTimeout(() => {
 						if (!cancelled) {
 							g.pointOfView(
