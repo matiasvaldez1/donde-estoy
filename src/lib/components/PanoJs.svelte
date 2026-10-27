@@ -85,15 +85,15 @@
 	<div bind:this={host} class="h-full w-full"></div>
 
 	{#if locked && status === 'ready'}
-		<div class="absolute inset-0 cursor-not-allowed" aria-hidden="true"></div>
+		<div class="absolute inset-0 z-10 cursor-not-allowed" aria-hidden="true"></div>
 	{/if}
 
 	{#if status === 'loading'}
-		<div class="absolute inset-0 flex items-center justify-center bg-bg-primary/80 text-sm text-text-muted">
+		<div class="absolute inset-0 z-10 flex items-center justify-center bg-bg-primary/80 text-sm text-text-muted">
 			Buscando el panorama…
 		</div>
 	{:else if status === 'error'}
-		<div class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-bg-primary/90 p-6 text-center">
+		<div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-bg-primary/90 p-6 text-center">
 			<p class="text-sm text-danger">{message}</p>
 			<p class="text-xs text-text-muted">
 				Si falta la clave, copiá <code>.env.example</code> a <code>.env</code> y poné tu

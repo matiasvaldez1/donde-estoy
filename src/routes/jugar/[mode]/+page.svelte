@@ -159,8 +159,13 @@
 			{/if}
 
 			{#if current && !showResult}
+				<!--
+					z-20 no es decorativo: el canvas WebGL del panorama de Google se come los
+					clicks de todo lo que no tenga z-index explícito, aunque se vea por encima.
+					Sin esto no se puede marcar el punto en el mapa.
+				-->
 				<div
-					class="absolute right-4 bottom-4 flex flex-col overflow-hidden rounded border border-border bg-bg-secondary shadow-xl transition-all
+					class="absolute right-4 bottom-4 z-20 flex flex-col overflow-hidden rounded border border-border bg-bg-secondary shadow-xl transition-all
 						{mapBig ? 'h-[70vh] w-[min(46rem,85vw)]' : 'h-56 w-72'}"
 				>
 					<div class="flex items-center justify-between px-2 py-1 text-xs text-text-muted">
@@ -196,7 +201,7 @@
 
 			{#if showResult && session.last}
 				{@const result = session.last}
-				<div class="absolute inset-0 flex items-center justify-center bg-bg-primary/90 p-4">
+				<div class="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary/90 p-4">
 					<div class="w-full max-w-2xl space-y-4 rounded border border-border bg-bg-secondary p-5">
 						<div class="flex items-baseline gap-4">
 							<h2 class="text-2xl font-semibold text-text-primary">
