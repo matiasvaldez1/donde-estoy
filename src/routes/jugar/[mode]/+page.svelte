@@ -207,7 +207,7 @@
 				-->
 				<div
 					class="absolute right-4 bottom-4 z-20 flex flex-col border-4 border-border bg-bg-secondary transition-all duration-150
-						{mapBig ? 'h-[70vh] w-[min(46rem,88vw)]' : 'h-44 w-60 sm:h-64 sm:w-80'}"
+						{mapBig ? 'h-[70vh] w-[min(46rem,88vw)]' : 'h-64 w-64 sm:w-80'}"
 				>
 					<div
 						class="flex items-center justify-between border-b-4 border-border px-2 py-1 font-display text-[8px] text-text-muted"
