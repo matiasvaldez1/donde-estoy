@@ -57,14 +57,14 @@
 
 	<span class="text-text-secondary" title="Ronda">
 		{#if typeof mode.rounds === 'number'}
-			<span class="hidden md:inline">Ronda </span>{state.results.length + 1}/{mode.rounds}
+			<span class="mr-1.5 hidden md:inline">Ronda</span>{state.results.length + 1}/{mode.rounds}
 		{:else}
-			<span class="hidden md:inline">Ronda </span>#{state.results.length + 1}
+			<span class="mr-1.5 hidden md:inline">Ronda</span>#{state.results.length + 1}
 		{/if}
 	</span>
 
 	<span class="text-text-primary" title="Puntaje">
-		{formatScore(state.totalScore)}<span class="hidden text-text-muted lg:inline"> pts</span>
+		{formatScore(state.totalScore)}<span class="ml-1.5 hidden text-text-muted lg:inline">pts</span>
 	</span>
 
 	{#if mode.usesLadder}
