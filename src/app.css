@@ -149,6 +149,21 @@ body {
 }
 
 /*
+ * NES.css dibuja sus bordes con un ::before posicionado en absoluto. Si el
+ * elemento no está posicionado, ese pseudo toma como referencia el viewport y
+ * termina siendo una capa de pantalla completa que se come todos los clicks:
+ * en /stats la tabla tapaba la barra de navegación entera.
+ */
+.nes-table,
+.nes-container,
+.nes-btn,
+.nes-progress,
+.nes-balloon,
+.nes-badge {
+	position: relative;
+}
+
+/*
  * El globo se renderiza a un tercio de tamaño y se estira por CSS: así los
  * píxeles quedan gordos de verdad en vez de un 3D suavizado.
  */
