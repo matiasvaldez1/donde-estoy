@@ -21,7 +21,7 @@
 	 * truco que hace que un globo 3D no desentone con el resto: píxeles gordos
 	 * de verdad, no un globo corporativo suavizado.
 	 */
-	const SCALE = ambient ? 3 : 2;
+	const SCALE = $derived(ambient ? 3 : 2);
 
 	$effect(() => {
 		const target = result;
@@ -78,7 +78,6 @@
 				g.atmosphereAltitude(0.12);
 				g.polygonsData(countries.features);
 				g.polygonCapColor(() => land);
-				g.polygonStrokeColor(() => accent);
 				g.polygonSideColor(() => 'rgba(0,0,0,0)');
 				g.polygonStrokeColor(() => accent);
 				g.polygonAltitude(0.006);
