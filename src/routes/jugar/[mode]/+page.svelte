@@ -207,7 +207,7 @@
 				-->
 				<div
 					class="absolute right-4 bottom-4 z-20 flex flex-col border-4 border-border bg-bg-secondary transition-all duration-150
-						{mapBig ? 'h-[70vh] w-[min(46rem,85vw)]' : 'h-64 w-80'}"
+						{mapBig ? 'h-[70vh] w-[min(46rem,88vw)]' : 'h-44 w-60 sm:h-64 sm:w-80'}"
 				>
 					<div
 						class="flex items-center justify-between border-b-4 border-border px-2 py-1 font-display text-[8px] text-text-muted"
@@ -218,7 +218,7 @@
 								mapBig = !mapBig;
 								settings.setMapBig(mapBig);
 							}}
-							class="press flex items-center gap-1 px-1 hover:text-text-primary"
+							class="press flex min-h-9 items-center gap-1 px-2 hover:text-text-primary"
 							aria-label={mapBig ? 'Achicar el mapa' : 'Agrandar el mapa'}
 						>
 							<Icon name={mapBig ? 'down' : 'up'} size={8} />

@@ -112,11 +112,12 @@
 
 		<button
 			onclick={onquit}
-			class="press text-text-muted hover:text-danger"
-			title="Salir de la partida"
+			class="press -mr-2 flex min-h-11 min-w-11 items-center justify-center gap-2 border-2 border-transparent px-2 text-text-secondary hover:border-danger hover:text-danger"
+			title="Salir de la partida (Esc)"
 			aria-label="Salir de la partida"
 		>
 			<Icon name="salir" size={12} />
+			<span class="hidden sm:inline">Salir</span>
 		</button>
 	</span>
 </div>
