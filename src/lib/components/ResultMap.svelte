@@ -11,9 +11,13 @@
 	$effect(() => {
 		const c = mapColors();
 		const map = L.map(host, { attributionControl: true });
-		L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-			attribution: '&copy; OpenStreetMap, &copy; CARTO',
-			maxZoom: 18
+		const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+		L.tileLayer(`${ESRI}/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+			attribution: '&copy; Esri, HERE, Garmin, &copy; OpenStreetMap',
+			maxZoom: 16
+		}).addTo(map);
+		L.tileLayer(`${ESRI}/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, {
+			maxZoom: 16
 		}).addTo(map);
 
 		const truth: L.LatLngTuple = [result.location.lat, result.location.lng];

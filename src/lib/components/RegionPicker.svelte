@@ -35,7 +35,7 @@
 		{@const list = playable.filter((r) => r.kind === group.kind)}
 		{#if list.length}
 			<div>
-				<h3 class="mb-2 font-display text-[8px] tracking-wide text-text-muted uppercase">
+				<h3 class="mb-2 font-display text-[8px] tracking-wide text-text-muted">
 					{group.label}
 				</h3>
 				<div class="flex flex-wrap gap-2">

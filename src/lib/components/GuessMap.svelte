@@ -20,22 +20,21 @@
 	let map = $state<L.Map | null>(null);
 	let marker: L.CircleMarker | null = null;
 
-	const TILES = {
-		labels: {
-			url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-			attribution: '&copy; OpenStreetMap, &copy; CARTO'
-		},
-		// dark_nolabels, no light_: el claro era un rectángulo blanco en una app negra.
-		plain: {
-			url: 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
-			attribution: '&copy; OpenStreetMap, &copy; CARTO'
-		}
-	};
+	const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+	const ATTRIB = '&copy; Esri, HERE, Garmin, &copy; OpenStreetMap';
 
 	$effect(() => {
-		const tiles = labels ? TILES.labels : TILES.plain;
 		const instance = L.map(host, { attributionControl: true, worldCopyJump: true });
-		L.tileLayer(tiles.url, { attribution: tiles.attribution, maxZoom: 18 }).addTo(instance);
+		// Ojo: Esri sirve como {z}/{y}/{x}, al revés que OSM.
+		L.tileLayer(`${ESRI}/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+			attribution: ATTRIB,
+			maxZoom: 16
+		}).addTo(instance);
+		if (labels) {
+			L.tileLayer(`${ESRI}/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, {
+				maxZoom: 16
+			}).addTo(instance);
+		}
 
 		instance.on('click', (event: L.LeafletMouseEvent) => {
 			value = { lat: event.latlng.lat, lng: event.latlng.lng };
