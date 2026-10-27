@@ -96,6 +96,10 @@ body {
 	outline-offset: 2px;
 }
 
+.leaflet-tile {
+	filter: contrast(1.35) brightness(1.25);
+}
+
 .leaflet-container {
 	background: var(--color-bg-tertiary);
 	font-family: var(--font-body);

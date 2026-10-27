@@ -19,6 +19,9 @@
 	   cuando el mapa se reconstruye, si no queda sin centro ni zoom. */
 	let map = $state<L.Map | null>(null);
 	let marker: L.CircleMarker | null = null;
+	/* Si ya moviste el mapa vos, agrandarlo no te tiene que pisar el encuadre. */
+	let touched = false;
+	let fitting = false;
 
 	const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
 	const ATTRIB = '&copy; Esri, HERE, Garmin, &copy; OpenStreetMap';
@@ -39,11 +42,20 @@
 		instance.on('click', (event: L.LeafletMouseEvent) => {
 			value = { lat: event.latlng.lat, lng: event.latlng.lng };
 		});
+		instance.on('dragstart', () => (touched = true));
+		instance.on('zoomstart', () => {
+			if (!fitting) touched = true;
+		});
 
 		/* El panel se agranda y achica con una transición CSS. Sin invalidateSize
 		   Leaflet queda con el tamaño viejo: aparecen franjas grises y, peor, la
 		   conversión de click a coordenada apunta mal. */
-		const observer = new ResizeObserver(() => instance.invalidateSize({ animate: false }));
+		const observer = new ResizeObserver(() => {
+			instance.invalidateSize({ animate: false });
+			// Agrandar el panel es para ganar precisión: la región tiene que
+			// volver a llenarlo, no destaparte el Atlántico.
+			if (!touched) fit(instance);
+		});
 		observer.observe(host);
 
 		map = instance;
@@ -58,17 +70,25 @@
 	});
 
 	// Encuadrar la región en juego: en CABA no tiene sentido arrancar viendo el mundo.
-	$effect(() => {
-		const instance = map;
-		if (!instance) return;
+	function fit(instance: L.Map) {
 		const [w, s, e, n] = region.bbox;
+		fitting = true;
 		instance.fitBounds(
 			[
 				[s, w],
 				[n, e]
 			],
-			{ padding: [8, 8] }
+			{ padding: [8, 8], animate: false }
 		);
+		fitting = false;
+	}
+
+	$effect(() => {
+		const instance = map;
+		if (!instance) return;
+		void region;
+		touched = false;
+		fit(instance);
 	});
 
 	$effect(() => {
