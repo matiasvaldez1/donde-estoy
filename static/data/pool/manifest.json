@@ -1,0 +1,181 @@
+{
+	"version": 1,
+	"builtAt": "2026-10-27T04:31:44.439Z",
+	"regions": {
+		"ar": {
+			"count": 68,
+			"shards": [
+				"ar.json"
+			],
+			"source": "seed"
+		},
+		"ar-caba": {
+			"count": 28,
+			"shards": [
+				"ar-caba.json"
+			],
+			"source": "seed"
+		},
+		"ar-ba": {
+			"count": 12,
+			"shards": [
+				"ar-ba.json"
+			],
+			"source": "seed"
+		},
+		"ar-ca": {
+			"count": 1,
+			"shards": [
+				"ar-ca.json"
+			],
+			"source": "seed"
+		},
+		"ar-cb": {
+			"count": 4,
+			"shards": [
+				"ar-cb.json"
+			],
+			"source": "seed"
+		},
+		"ar-ch": {
+			"count": 1,
+			"shards": [
+				"ar-ch.json"
+			],
+			"source": "seed"
+		},
+		"ar-co": {
+			"count": 3,
+			"shards": [
+				"ar-co.json"
+			],
+			"source": "seed"
+		},
+		"ar-cr": {
+			"count": 1,
+			"shards": [
+				"ar-cr.json"
+			],
+			"source": "seed"
+		},
+		"ar-er": {
+			"count": 2,
+			"shards": [
+				"ar-er.json"
+			],
+			"source": "seed"
+		},
+		"ar-fo": {
+			"count": 1,
+			"shards": [
+				"ar-fo.json"
+			],
+			"source": "seed"
+		},
+		"ar-jy": {
+			"count": 2,
+			"shards": [
+				"ar-jy.json"
+			],
+			"source": "seed"
+		},
+		"ar-lp": {
+			"count": 1,
+			"shards": [
+				"ar-lp.json"
+			],
+			"source": "seed"
+		},
+		"ar-lr": {
+			"count": 1,
+			"shards": [
+				"ar-lr.json"
+			],
+			"source": "seed"
+		},
+		"ar-mi": {
+			"count": 2,
+			"shards": [
+				"ar-mi.json"
+			],
+			"source": "seed"
+		},
+		"ar-mz": {
+			"count": 2,
+			"shards": [
+				"ar-mz.json"
+			],
+			"source": "seed"
+		},
+		"ar-nq": {
+			"count": 2,
+			"shards": [
+				"ar-nq.json"
+			],
+			"source": "seed"
+		},
+		"ar-rn": {
+			"count": 2,
+			"shards": [
+				"ar-rn.json"
+			],
+			"source": "seed"
+		},
+		"ar-sa": {
+			"count": 1,
+			"shards": [
+				"ar-sa.json"
+			],
+			"source": "seed"
+		},
+		"ar-sc": {
+			"count": 3,
+			"shards": [
+				"ar-sc.json"
+			],
+			"source": "seed"
+		},
+		"ar-se": {
+			"count": 1,
+			"shards": [
+				"ar-se.json"
+			],
+			"source": "seed"
+		},
+		"ar-sf": {
+			"count": 2,
+			"shards": [
+				"ar-sf.json"
+			],
+			"source": "seed"
+		},
+		"ar-sj": {
+			"count": 1,
+			"shards": [
+				"ar-sj.json"
+			],
+			"source": "seed"
+		},
+		"ar-sl": {
+			"count": 1,
+			"shards": [
+				"ar-sl.json"
+			],
+			"source": "seed"
+		},
+		"ar-tf": {
+			"count": 1,
+			"shards": [
+				"ar-tf.json"
+			],
+			"source": "seed"
+		},
+		"ar-tu": {
+			"count": 1,
+			"shards": [
+				"ar-tu.json"
+			],
+			"source": "seed"
+		}
+	}
+}

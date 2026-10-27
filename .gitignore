@@ -4,7 +4,7 @@ build/
 .env
 .env.*
 !.env.example
-data/
+/data/
 .DS_Store
 .claude/
 *.local

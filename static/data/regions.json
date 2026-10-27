@@ -1,0 +1,949 @@
+{
+	"version": 1,
+	"generatedAt": "2026-10-27T04:31:01.659Z",
+	"regions": {
+		"world": {
+			"id": "world",
+			"name": "Mundo",
+			"kind": "world",
+			"parentId": null,
+			"childIds": [
+				"americas"
+			],
+			"shards": [
+				"_mix/world.json"
+			],
+			"bbox": [
+				-180,
+				-60,
+				180,
+				75
+			],
+			"center": [
+				7.5,
+				0
+			],
+			"diagonalKm": 15011,
+			"locationCount": 0,
+			"escalatesTo": null
+		},
+		"americas": {
+			"id": "americas",
+			"name": "América",
+			"kind": "continent",
+			"parentId": "world",
+			"childIds": [
+				"latam"
+			],
+			"shards": [
+				"_mix/americas.json"
+			],
+			"bbox": [
+				-168,
+				-56,
+				-34,
+				72
+			],
+			"center": [
+				8,
+				-101
+			],
+			"diagonalKm": 15011,
+			"locationCount": 0,
+			"escalatesTo": "world"
+		},
+		"latam": {
+			"id": "latam",
+			"name": "Latinoamérica",
+			"kind": "continent",
+			"parentId": "americas",
+			"childIds": [
+				"cono-sur",
+				"andina",
+				"mex-centroamerica",
+				"br"
+			],
+			"shards": [
+				"_mix/latam.json"
+			],
+			"bbox": [
+				-118.4,
+				-56,
+				-34.8,
+				32.7
+			],
+			"center": [
+				-11.649999999999999,
+				-76.6
+			],
+			"diagonalKm": 12598,
+			"locationCount": 0,
+			"escalatesTo": "americas"
+		},
+		"cono-sur": {
+			"id": "cono-sur",
+			"name": "Cono Sur",
+			"kind": "bloc",
+			"parentId": "latam",
+			"childIds": [
+				"ar",
+				"cl",
+				"uy",
+				"py"
+			],
+			"shards": [
+				"_mix/cono-sur.json"
+			],
+			"bbox": [
+				-75.7,
+				-55.98,
+				-53.1,
+				-17.5
+			],
+			"center": [
+				-36.739999999999995,
+				-64.4
+			],
+			"diagonalKm": 4682,
+			"locationCount": 0,
+			"escalatesTo": "latam"
+		},
+		"andina": {
+			"id": "andina",
+			"name": "Región Andina",
+			"kind": "bloc",
+			"parentId": "latam",
+			"childIds": [
+				"bo",
+				"pe",
+				"co"
+			],
+			"shards": [
+				"_mix/andina.json"
+			],
+			"bbox": [
+				-81.4,
+				-22.9,
+				-66.9,
+				12.5
+			],
+			"center": [
+				-5.199999999999999,
+				-74.15
+			],
+			"diagonalKm": 4241,
+			"locationCount": 0,
+			"escalatesTo": "latam"
+		},
+		"mex-centroamerica": {
+			"id": "mex-centroamerica",
+			"name": "México y Centroamérica",
+			"kind": "bloc",
+			"parentId": "latam",
+			"childIds": [
+				"mx"
+			],
+			"shards": [
+				"_mix/mex-centroamerica.json"
+			],
+			"bbox": [
+				-118.4,
+				7.2,
+				-77.2,
+				32.7
+			],
+			"center": [
+				19.950000000000003,
+				-97.80000000000001
+			],
+			"diagonalKm": 5104,
+			"locationCount": 0,
+			"escalatesTo": "latam"
+		},
+		"ar": {
+			"id": "ar",
+			"name": "Argentina",
+			"kind": "country",
+			"parentId": "cono-sur",
+			"childIds": [
+				"ar-ba",
+				"ar-ca",
+				"ar-cb",
+				"ar-ch",
+				"ar-co",
+				"ar-cr",
+				"ar-er",
+				"ar-fo",
+				"ar-jy",
+				"ar-lp",
+				"ar-lr",
+				"ar-mi",
+				"ar-mz",
+				"ar-nq",
+				"ar-rn",
+				"ar-sa",
+				"ar-sc",
+				"ar-se",
+				"ar-sf",
+				"ar-sj",
+				"ar-sl",
+				"ar-tf",
+				"ar-tu"
+			],
+			"shards": [
+				"ar.json"
+			],
+			"bbox": [
+				-73.6,
+				-55.1,
+				-53.6,
+				-21.8
+			],
+			"center": [
+				-38.45,
+				-63.599999999999994
+			],
+			"diagonalKm": 4060,
+			"locationCount": 0,
+			"escalatesTo": "cono-sur"
+		},
+		"cl": {
+			"id": "cl",
+			"name": "Chile",
+			"kind": "country",
+			"parentId": "cono-sur",
+			"childIds": [],
+			"shards": [
+				"cl.json"
+			],
+			"bbox": [
+				-75.7,
+				-55.98,
+				-66.4,
+				-17.5
+			],
+			"center": [
+				-36.739999999999995,
+				-71.05000000000001
+			],
+			"diagonalKm": 4350,
+			"locationCount": 0,
+			"escalatesTo": "cono-sur"
+		},
+		"uy": {
+			"id": "uy",
+			"name": "Uruguay",
+			"kind": "country",
+			"parentId": "cono-sur",
+			"childIds": [],
+			"shards": [
+				"uy.json"
+			],
+			"bbox": [
+				-58.5,
+				-35,
+				-53.1,
+				-30.1
+			],
+			"center": [
+				-32.55,
+				-55.8
+			],
+			"diagonalKm": 743,
+			"locationCount": 0,
+			"escalatesTo": "cono-sur"
+		},
+		"py": {
+			"id": "py",
+			"name": "Paraguay",
+			"kind": "country",
+			"parentId": "cono-sur",
+			"childIds": [],
+			"shards": [
+				"py.json"
+			],
+			"bbox": [
+				-62.7,
+				-27.6,
+				-54.2,
+				-19.3
+			],
+			"center": [
+				-23.450000000000003,
+				-58.45
+			],
+			"diagonalKm": 1265,
+			"locationCount": 0,
+			"escalatesTo": "cono-sur"
+		},
+		"bo": {
+			"id": "bo",
+			"name": "Bolivia",
+			"kind": "country",
+			"parentId": "andina",
+			"childIds": [],
+			"shards": [
+				"bo.json"
+			],
+			"bbox": [
+				-69.7,
+				-22.9,
+				-57.5,
+				-9.7
+			],
+			"center": [
+				-16.299999999999997,
+				-63.6
+			],
+			"diagonalKm": 1960,
+			"locationCount": 0,
+			"escalatesTo": "andina"
+		},
+		"pe": {
+			"id": "pe",
+			"name": "Perú",
+			"kind": "country",
+			"parentId": "andina",
+			"childIds": [],
+			"shards": [
+				"pe.json"
+			],
+			"bbox": [
+				-81.4,
+				-18.4,
+				-68.7,
+				-0.03
+			],
+			"center": [
+				-9.215,
+				-75.05000000000001
+			],
+			"diagonalKm": 2469,
+			"locationCount": 0,
+			"escalatesTo": "andina"
+		},
+		"co": {
+			"id": "co",
+			"name": "Colombia",
+			"kind": "country",
+			"parentId": "andina",
+			"childIds": [],
+			"shards": [
+				"co.json"
+			],
+			"bbox": [
+				-79,
+				-4.2,
+				-66.9,
+				12.5
+			],
+			"center": [
+				4.15,
+				-72.95
+			],
+			"diagonalKm": 2288,
+			"locationCount": 0,
+			"escalatesTo": "andina"
+		},
+		"br": {
+			"id": "br",
+			"name": "Brasil",
+			"kind": "country",
+			"parentId": "latam",
+			"childIds": [],
+			"shards": [
+				"br.json"
+			],
+			"bbox": [
+				-74,
+				-33.8,
+				-34.8,
+				5.3
+			],
+			"center": [
+				-14.249999999999998,
+				-54.4
+			],
+			"diagonalKm": 5988,
+			"locationCount": 0,
+			"escalatesTo": "latam"
+		},
+		"mx": {
+			"id": "mx",
+			"name": "México",
+			"kind": "country",
+			"parentId": "mex-centroamerica",
+			"childIds": [],
+			"shards": [
+				"mx.json"
+			],
+			"bbox": [
+				-118.4,
+				14.5,
+				-86.7,
+				32.7
+			],
+			"center": [
+				23.6,
+				-102.55000000000001
+			],
+			"diagonalKm": 3788,
+			"locationCount": 0,
+			"escalatesTo": "mex-centroamerica"
+		},
+		"ar-caba": {
+			"id": "ar-caba",
+			"name": "CABA y GBA",
+			"kind": "city",
+			"parentId": "ar-ba",
+			"childIds": [],
+			"shards": [
+				"ar-caba.json"
+			],
+			"bbox": [
+				-58.8,
+				-34.85,
+				-58.15,
+				-34.4
+			],
+			"center": [
+				-34.625,
+				-58.474999999999994
+			],
+			"diagonalKm": 78,
+			"locationCount": 0,
+			"escalatesTo": "ar-ba"
+		},
+		"ar-ba": {
+			"id": "ar-ba",
+			"name": "Buenos Aires",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [
+				"ar-caba"
+			],
+			"shards": [
+				"ar-ba.json"
+			],
+			"bbox": [
+				-63.4,
+				-41.05,
+				-56.66,
+				-33.26
+			],
+			"center": [
+				-37.155,
+				-60.03
+			],
+			"diagonalKm": 1051,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-ca": {
+			"id": "ar-ca",
+			"name": "Catamarca",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-ca.json"
+			],
+			"bbox": [
+				-69.05,
+				-29.1,
+				-64.9,
+				-25
+			],
+			"center": [
+				-27.05,
+				-66.975
+			],
+			"diagonalKm": 614,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-cb": {
+			"id": "ar-cb",
+			"name": "Chubut",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-cb.json"
+			],
+			"bbox": [
+				-71.9,
+				-46,
+				-63.5,
+				-42
+			],
+			"center": [
+				-44,
+				-67.7
+			],
+			"diagonalKm": 805,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-ch": {
+			"id": "ar-ch",
+			"name": "Chaco",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-ch.json"
+			],
+			"bbox": [
+				-63.4,
+				-28.1,
+				-58.3,
+				-24.1
+			],
+			"center": [
+				-26.1,
+				-60.849999999999994
+			],
+			"diagonalKm": 676,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-co": {
+			"id": "ar-co",
+			"name": "Córdoba",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-co.json"
+			],
+			"bbox": [
+				-65.8,
+				-35,
+				-61.8,
+				-29.5
+			],
+			"center": [
+				-32.25,
+				-63.8
+			],
+			"diagonalKm": 718,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-cr": {
+			"id": "ar-cr",
+			"name": "Corrientes",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-cr.json"
+			],
+			"bbox": [
+				-59.7,
+				-30.7,
+				-55.6,
+				-27.3
+			],
+			"center": [
+				-29,
+				-57.650000000000006
+			],
+			"diagonalKm": 549,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-er": {
+			"id": "ar-er",
+			"name": "Entre Ríos",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-er.json"
+			],
+			"bbox": [
+				-60.8,
+				-34,
+				-57.8,
+				-30.2
+			],
+			"center": [
+				-32.1,
+				-59.3
+			],
+			"diagonalKm": 508,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-fo": {
+			"id": "ar-fo",
+			"name": "Formosa",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-fo.json"
+			],
+			"bbox": [
+				-62.4,
+				-26.9,
+				-57.5,
+				-22
+			],
+			"center": [
+				-24.45,
+				-59.95
+			],
+			"diagonalKm": 737,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-jy": {
+			"id": "ar-jy",
+			"name": "Jujuy",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-jy.json"
+			],
+			"bbox": [
+				-67.2,
+				-24.6,
+				-64.1,
+				-21.8
+			],
+			"center": [
+				-23.200000000000003,
+				-65.65
+			],
+			"diagonalKm": 444,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-lp": {
+			"id": "ar-lp",
+			"name": "La Pampa",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-lp.json"
+			],
+			"bbox": [
+				-68.3,
+				-39,
+				-63.4,
+				-35
+			],
+			"center": [
+				-37,
+				-65.85
+			],
+			"diagonalKm": 622,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-lr": {
+			"id": "ar-lr",
+			"name": "La Rioja",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-lr.json"
+			],
+			"bbox": [
+				-69.6,
+				-31.9,
+				-65.5,
+				-27.7
+			],
+			"center": [
+				-29.799999999999997,
+				-67.55
+			],
+			"diagonalKm": 612,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-mi": {
+			"id": "ar-mi",
+			"name": "Misiones",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-mi.json"
+			],
+			"bbox": [
+				-56.1,
+				-28.2,
+				-53.6,
+				-25.5
+			],
+			"center": [
+				-26.85,
+				-54.85
+			],
+			"diagonalKm": 389,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-mz": {
+			"id": "ar-mz",
+			"name": "Mendoza",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-mz.json"
+			],
+			"bbox": [
+				-70.6,
+				-37.6,
+				-66.5,
+				-31.9
+			],
+			"center": [
+				-34.75,
+				-68.55
+			],
+			"diagonalKm": 736,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-nq": {
+			"id": "ar-nq",
+			"name": "Neuquén",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-nq.json"
+			],
+			"bbox": [
+				-71.9,
+				-41.1,
+				-68,
+				-36
+			],
+			"center": [
+				-38.55,
+				-69.95
+			],
+			"diagonalKm": 661,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-rn": {
+			"id": "ar-rn",
+			"name": "Río Negro",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-rn.json"
+			],
+			"bbox": [
+				-71.9,
+				-42,
+				-62.8,
+				-37.6
+			],
+			"center": [
+				-39.8,
+				-67.35
+			],
+			"diagonalKm": 918,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-sa": {
+			"id": "ar-sa",
+			"name": "Salta",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-sa.json"
+			],
+			"bbox": [
+				-68.6,
+				-26.4,
+				-62.3,
+				-22
+			],
+			"center": [
+				-24.2,
+				-65.44999999999999
+			],
+			"diagonalKm": 805,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-sc": {
+			"id": "ar-sc",
+			"name": "Santa Cruz",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-sc.json"
+			],
+			"bbox": [
+				-73.6,
+				-52.4,
+				-65.7,
+				-46
+			],
+			"center": [
+				-49.2,
+				-69.65
+			],
+			"diagonalKm": 913,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-se": {
+			"id": "ar-se",
+			"name": "Santiago del Estero",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-se.json"
+			],
+			"bbox": [
+				-65.6,
+				-30.1,
+				-61.7,
+				-25.6
+			],
+			"center": [
+				-27.85,
+				-63.65
+			],
+			"diagonalKm": 630,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-sf": {
+			"id": "ar-sf",
+			"name": "Santa Fe",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-sf.json"
+			],
+			"bbox": [
+				-63,
+				-34.5,
+				-58.8,
+				-28
+			],
+			"center": [
+				-31.25,
+				-60.9
+			],
+			"diagonalKm": 825,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-sj": {
+			"id": "ar-sj",
+			"name": "San Juan",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-sj.json"
+			],
+			"bbox": [
+				-70.6,
+				-32.9,
+				-66.7,
+				-28.4
+			],
+			"center": [
+				-30.65,
+				-68.65
+			],
+			"diagonalKm": 624,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-sl": {
+			"id": "ar-sl",
+			"name": "San Luis",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-sl.json"
+			],
+			"bbox": [
+				-67.4,
+				-36,
+				-64.9,
+				-31.8
+			],
+			"center": [
+				-33.9,
+				-66.15
+			],
+			"diagonalKm": 521,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-tf": {
+			"id": "ar-tf",
+			"name": "Tierra del Fuego",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-tf.json"
+			],
+			"bbox": [
+				-68.6,
+				-55.1,
+				-65,
+				-52.6
+			],
+			"center": [
+				-53.85,
+				-66.8
+			],
+			"diagonalKm": 365,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		},
+		"ar-tu": {
+			"id": "ar-tu",
+			"name": "Tucumán",
+			"kind": "admin1",
+			"parentId": "ar",
+			"childIds": [],
+			"shards": [
+				"ar-tu.json"
+			],
+			"bbox": [
+				-66.2,
+				-28,
+				-64.5,
+				-26
+			],
+			"center": [
+				-27,
+				-65.35
+			],
+			"diagonalKm": 279,
+			"locationCount": 0,
+			"escalatesTo": "ar"
+		}
+	}
+}
