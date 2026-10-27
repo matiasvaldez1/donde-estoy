@@ -18,6 +18,12 @@ class SettingsStore {
 		this.current.mapLabels = on;
 		saveSettings(this.current);
 	}
+
+	/** Si te gusta el mapa grande, que siga grande la ronda que viene. */
+	setMapBig(on: boolean): void {
+		this.current.mapBig = on;
+		saveSettings(this.current);
+	}
 }
 
 export const settings = new SettingsStore();

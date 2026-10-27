@@ -177,4 +177,5 @@ export interface Settings {
 	schemaVersion: number;
 	playerRegionId: string;
 	mapLabels: boolean;
+	mapBig: boolean;
 }

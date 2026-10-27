@@ -26,6 +26,7 @@
 	let session = $state<Session | null>(null);
 	let pin = $state<{ lat: number; lng: number } | null>(null);
 	let mapBig = $state(false);
+
 	let dailyLocked = $state(false);
 	let globeFailed = $state(false);
 	let shown = $state(0);
@@ -57,6 +58,7 @@
 		}
 
 		pin = null;
+		mapBig = settings.current.mapBig;
 		const created = new Session(
 			mode,
 			settings.current.playerRegionId,
@@ -116,7 +118,6 @@
 
 	async function nextRound() {
 		pin = null;
-		mapBig = false;
 		globeFailed = false;
 		await session?.next();
 	}
@@ -139,7 +140,10 @@
 			if (showResult && game?.status === 'result') nextRound();
 			else if (pin) submitPin();
 		}
-		if (event.key === 'm' && !showResult) mapBig = !mapBig;
+		if (event.key === 'm' && !showResult) {
+			mapBig = !mapBig;
+			settings.setMapBig(mapBig);
+		}
 	}
 </script>
 
@@ -210,7 +214,10 @@
 					>
 						<span>{guessKind === 'pin' ? 'Marcá en el mapa' : 'Elegí la respuesta'}</span>
 						<button
-							onclick={() => (mapBig = !mapBig)}
+							onclick={() => {
+								mapBig = !mapBig;
+								settings.setMapBig(mapBig);
+							}}
 							class="press flex items-center gap-1 px-1 hover:text-text-primary"
 							aria-label={mapBig ? 'Achicar el mapa' : 'Agrandar el mapa'}
 						>

@@ -22,7 +22,8 @@ export function defaultSettings(): Settings {
 	return {
 		schemaVersion: SCHEMA_VERSION,
 		playerRegionId: 'ar',
-		mapLabels: true
+		mapLabels: true,
+		mapBig: false
 	};
 }
 

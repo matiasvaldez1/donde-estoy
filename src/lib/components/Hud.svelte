@@ -55,19 +55,29 @@
 		<span class="hidden sm:inline">{mode.name}</span>
 	</span>
 
-	<span class="text-text-secondary">
+	<span class="text-text-secondary" title="Ronda">
 		{#if typeof mode.rounds === 'number'}
-			{state.results.length + 1}/{mode.rounds}
+			<span class="hidden md:inline">Ronda </span>{state.results.length + 1}/{mode.rounds}
 		{:else}
-			#{state.results.length + 1}
+			<span class="hidden md:inline">Ronda </span>#{state.results.length + 1}
 		{/if}
 	</span>
 
-	<span class="text-text-primary">{formatScore(state.totalScore)}</span>
+	<span class="text-text-primary" title="Puntaje">
+		{formatScore(state.totalScore)}<span class="hidden text-text-muted lg:inline"> pts</span>
+	</span>
 
 	{#if mode.usesLadder}
-		<span class={HEAT_TEXT[heat]}>R{state.streak}</span>
-		<span class="text-text-muted">E{state.tier}/{MAX_TIER}</span>
+		<span class="flex items-center gap-1.5 {HEAT_TEXT[heat]}" title="Racha de aciertos">
+			<Icon name="racha" size={10} />
+			<span class="hidden md:inline">Racha</span>
+			{state.streak}
+		</span>
+		<span class="flex items-center gap-1.5 text-text-muted" title="Escalón de dificultad">
+			<Icon name="escalera" size={10} />
+			<span class="hidden md:inline">Escalón</span>
+			{state.tier}/{MAX_TIER}
+		</span>
 	{/if}
 
 	{#if region}
